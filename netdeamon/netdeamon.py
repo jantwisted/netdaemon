@@ -25,6 +25,13 @@ def CreateServerInstance_Tcp(port):
     s_descriptor_front.bind((host_front, port_front))
     return s_descriptor_front
 
+def CreateServerInstance_Udp(port):
+    s_descriptor_front = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    host_front = socket.gethostname()
+    port_front = port
+    s_descriptor_front.bind((host_front, port_front))
+    return s_descriptor_front
+
 
 def ReplyStrFrontEndModule(client_connection_dict):
     client_connection_str = json.dumps(client_connection_dict)
@@ -66,17 +73,13 @@ def Puzzle_00(port_number=9090):
         clientsocket.close()
 
 
-def Puzzle_01(port_number=9091):
+def Puzzle_01(port_number=30101):
     puzzle_number = 1
-    server_socket = CreateServerInstance_Tcp(port_number)
-    server_socket.listen(5)
+    server_socket = CreateServerInstance_Udp(port_number)
     while 1:
-        clientsocket, addr = server_socket.accept()
-        msg = clientsocket.recv(1024)
+        msg, addr = server_socket.recvfrom(1024)
         client_json = ConstructJSON(msg, addr, puzzle_number)
         PostResultToAPI(client_json)
-        clientsocket.close()
-
 
 
 if __name__=='__main__':
