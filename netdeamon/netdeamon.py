@@ -9,6 +9,9 @@ import threading
 """Main module."""
 
 url = "https://httpbin.org/post"
+p01_port = 30101
+p02_port = 9090
+
 
 def CreateServerInstance_tcp(port):
     s_descriptor_front = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -22,6 +25,7 @@ def CreateServerInstance_Tcp(port):
     s_descriptor_front = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     host_front = socket.gethostname()
     port_front = port
+    print('starting up on {} port {}'.format(*(host_front, port_front)))
     s_descriptor_front.bind((host_front, port_front))
     return s_descriptor_front
 
@@ -29,6 +33,7 @@ def CreateServerInstance_Udp(port):
     s_descriptor_front = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     host_front = socket.gethostname()
     port_front = port
+    print('starting up on {} port {}'.format(*(host_front, port_front)))
     s_descriptor_front.bind((host_front, port_front))
     return s_descriptor_front
 
@@ -61,7 +66,7 @@ def ConstructJSON(received_msg, addr, puzzle_number):
     return client_json
 
 
-def Puzzle_00(port_number=9090):
+def Puzzle_00(port_number=p02_port):
     puzzle_number = 0
     server_socket = CreateServerInstance_Tcp(port_number)
     server_socket.listen(5)
@@ -73,7 +78,7 @@ def Puzzle_00(port_number=9090):
         clientsocket.close()
 
 
-def Puzzle_01(port_number=30101):
+def Puzzle_01(port_number=p01_port):
     puzzle_number = 1
     server_socket = CreateServerInstance_Udp(port_number)
     while 1:
