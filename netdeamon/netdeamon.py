@@ -8,7 +8,7 @@ import threading
 
 """Main module."""
 
-url = "https://httpbin.org/post"
+url = "http://lab.funneaty.com/api/update"
 p01_port = 30101
 p02_port = 9090
 
@@ -46,12 +46,13 @@ def ReplyStrFrontEndModule(client_connection_dict):
 
 def PostResultToAPI(client_json):
     api_request = requests.post(url, data=client_json)
+    print(api_request.content)
     print(api_request.status_code, api_request.reason)
 
 
 def LoadPuzzle():
-    p0 = threading.Thread(name='puzzle00', target=Puzzle_00)
-    p1 = threading.Thread(name='puzzle01', target=Puzzle_01)
+    p0 = threading.Thread(name='puzzle00', target=Puzzle_01)
+    p1 = threading.Thread(name='puzzle01', target=Puzzle_02)
     p0.start()
     p1.start()
 
@@ -66,8 +67,8 @@ def ConstructJSON(received_msg, addr, puzzle_number):
     return client_json
 
 
-def Puzzle_00(port_number=p02_port):
-    puzzle_number = 0
+def Puzzle_01(port_number=p02_port):
+    puzzle_number = 1
     server_socket = CreateServerInstance_Tcp(port_number)
     server_socket.listen(5)
     while 1:
@@ -78,8 +79,8 @@ def Puzzle_00(port_number=p02_port):
         clientsocket.close()
 
 
-def Puzzle_01(port_number=p01_port):
-    puzzle_number = 1
+def Puzzle_02(port_number=p01_port):
+    puzzle_number = 2
     server_socket = CreateServerInstance_Udp(port_number)
     while 1:
         msg, addr = server_socket.recvfrom(1024)
