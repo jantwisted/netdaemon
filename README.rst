@@ -1,16 +1,16 @@
 =========
-netdeamon
+netdaemon
 =========
 
 
-.. image:: https://img.shields.io/pypi/v/netdeamon.svg
-        :target: https://pypi.python.org/pypi/netdeamon
+.. image:: https://img.shields.io/pypi/v/netdaemon.svg
+        :target: https://pypi.python.org/pypi/netdaemon
 
-.. image:: https://img.shields.io/travis/jantwisted/netdeamon.svg
-        :target: https://travis-ci.org/jantwisted/netdeamon
+.. image:: https://img.shields.io/travis/jantwisted/netdaemon.svg
+        :target: https://travis-ci.org/jantwisted/netdaemon
 
-.. image:: https://readthedocs.org/projects/netdeamon/badge/?version=latest
-        :target: https://netdeamon.readthedocs.io/en/latest/?badge=latest
+.. image:: https://readthedocs.org/projects/netdaemon/badge/?version=latest
+        :target: https://netdaemon.readthedocs.io/en/latest/?badge=latest
         :alt: Documentation Status
 
 
@@ -20,7 +20,7 @@ server to evaluate connections
 
 
 * Free software: GNU General Public License v3
-* Documentation: https://netdeamon.readthedocs.io.
+* Documentation: https://netdaemon.readthedocs.io.
 
 
 Features
